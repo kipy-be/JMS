@@ -42,6 +42,34 @@ namespace JMS.Data.Models
             set { SetValue(value); }
         }
 
+        [DbField("server_bot_nick")]
+        public string BotNick
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
+        [DbField("server_bot_alternate_nick")]
+        public string BotAlternateNick
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
+        [DbField("server_bot_real_name")]
+        public string BotRealName
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
+        [DbField("server_bot_password")]
+        public string BotPassword
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
         public List<Chan> Chans { get; set; }
     }
 }

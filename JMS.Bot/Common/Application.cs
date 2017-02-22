@@ -88,11 +88,7 @@ namespace JMS
                             || Config.DbPort == 0
                             || string.IsNullOrWhiteSpace(Config.DbName)
                             || string.IsNullOrWhiteSpace(Config.DbUser)
-                            || string.IsNullOrWhiteSpace(Config.DbPassword)
-                            || string.IsNullOrWhiteSpace(Config.BotNick)
-                            || string.IsNullOrWhiteSpace(Config.BotAlternateNick)
-                            || string.IsNullOrWhiteSpace(Config.BotUserName)
-                            || string.IsNullOrWhiteSpace(Config.BotPassword))
+                            || string.IsNullOrWhiteSpace(Config.DbPassword))
                             throw new Exception();
                     }
                 }

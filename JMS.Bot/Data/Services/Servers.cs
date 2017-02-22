@@ -20,7 +20,11 @@ namespace JMS.Data.Services
                     s.server_name,
                     s.server_host,
                     s.server_port,
-                    s.server_password
+                    s.server_password,
+                    s.server_bot_nick,
+                    s.server_bot_alternate_nick,
+                    s.server_bot_real_name,
+                    s.server_bot_password
                 FROM servers s
                 WHERE s.server_id = :p1",
 
@@ -37,7 +41,11 @@ namespace JMS.Data.Services
                     s.server_name,
                     s.server_host,
                     s.server_port,
-                    s.server_password
+                    s.server_password,
+                    s.server_bot_nick,
+                    s.server_bot_alternate_nick,
+                    s.server_bot_real_name,
+                    s.server_bot_password
                 FROM servers s"
             );
         }

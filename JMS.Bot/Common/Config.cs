@@ -15,11 +15,5 @@ namespace JMS.Common
 
         public bool EnableLogs { get; set; } = false;
         public string LogsPath { get; set; } = "";
-
-        public string BotNick { get; set; } = "JMS";
-        public string BotAlternateNick { get; set; } = "~JMS";
-        public string BotHostName { get; set; } = "jms.kipy.be";
-        public string BotUserName { get; set; } = "JeanMichelScribe";
-        public string BotPassword { get; set; }
     }
 }

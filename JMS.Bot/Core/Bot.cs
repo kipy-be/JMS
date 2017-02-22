@@ -92,8 +92,8 @@ namespace JMS.Core
                 _reader = new StreamReader(_stream);
                 _writer = new StreamWriter(_stream);
 
-                SendCommand("USER", _app.Config.BotUserName, _app.Config.BotHostName, _app.Config.BotNick, _app.Config.BotNick);
-                SendCommand("NICK", _app.Config.BotNick);
+                SendCommand("USER", _server.BotRealName, "jms.kipy.be", _server.BotNick, _server.BotNick);
+                SendCommand("NICK", _server.BotNick);
 
                 string line;
                 string[] data;
@@ -122,7 +122,7 @@ namespace JMS.Core
                     {
                         if (line.Contains("This nickname is registered"))
                         {
-                            SendCommand("PRIVMSG", "NICKSERV IDENTIFY", _app.Config.BotPassword);
+                            SendCommand("PRIVMSG", "NICKSERV IDENTIFY", _server.BotPassword);
                             isIdentified = true;
                             continue;
                         }
@@ -134,7 +134,7 @@ namespace JMS.Core
                 // Interactions
                     if (data.Length == 4 && (data[1] == "PRIVMSG" || data[1] == "NOTICE"))
                     {
-                        if(data[2] == _app.Config.BotNick)
+                        if(data[2] == _server.BotNick)
                         {
                             switch(data[3])
                             {

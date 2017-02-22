@@ -12,6 +12,10 @@
         server_host VARCHAR(128) NOT NULL,
         server_port INTEGER NOT NULL,
         server_password VARCHAR(32) NULL,
+        server_bot_nick VARCHAR(24) NOT NULL,
+        server_bot_alternate_nick VARCHAR(24) NULL,
+        server_bot_real_name VARCHAR(24) NULL,
+        server_bot_password VARCHAR(32) NOT NULL,
         CONSTRAINT PK_server PRIMARY KEY (server_id)
     );
     ALTER SEQUENCE s_servers OWNED BY servers.server_id;
@@ -64,7 +68,8 @@
     (
         log_id INTEGER NOT NULL DEFAULT NEXTVAL('s_logs'),
         log_from VARCHAR(24) NOT NULL,
-        log_message VARCHAR(1024) NOT NULL,
+        log_content VARCHAR(1024) NOT NULL,
+        log_is_action BOOLEAN NOT NULL DEFAULT(false),
         log_date TIMESTAMP NOT NULL,
         CONSTRAINT PK_log PRIMARY KEY (log_id)
     );
