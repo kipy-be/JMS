@@ -78,7 +78,7 @@ namespace JMS
                 try
                 {
                     JObject jo;
-                    using (StreamReader reader = new StreamReader(new FileStream(fileUrl, FileMode.Open, FileAccess.Read)))
+                    using (var reader = new StreamReader(new FileStream(fileUrl, FileMode.Open, FileAccess.Read)))
                     {
                         string json = reader.ReadToEnd();
                         jo = JObject.Parse(json);

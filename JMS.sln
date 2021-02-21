@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db", "Db", "{320BA257-9766-4364-988A-0CF7986758E9}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db", "Db", "{320BA257-9766-
 		Db\jms_data.sql = Db\jms_data.sql
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "JMS.Bot", "JMS.Bot\JMS.Bot.xproj", "{940EEE3E-FE91-4DF3-BD7E-C532574AC6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JMS.Bot", "JMS.Bot\JMS.Bot.csproj", "{940EEE3E-FE91-4DF3-BD7E-C532574AC6AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

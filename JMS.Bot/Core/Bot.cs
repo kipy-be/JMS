@@ -82,7 +82,39 @@ namespace JMS.Core
             _running = false;
         }
 
+        private void Reading()
+        {
+            try
+            {
+                while (_running)
+                {
+                    _getData.WaitOne();
+                    _data = _reader.ReadLine();
+                    _gotData.Set();
+                }
+            }
+            catch (Exception)
+            {}
+            finally
+            {
+                _app.Debug("Reading thread terminated");
+            }
+        }
 
+        private string ReadLine(int timeout)
+        {
+            _getData.Set();
+            bool success = _gotData.WaitOne(timeout);
+            if (success)
+                return _data;
+            else
+                return "NOP";
+        }
+
+        public bool IsRunning
+        {
+            get { return _running; }
+        }
 
         private void Working()
         {
@@ -128,20 +160,29 @@ namespace JMS.Core
                         }
                     }
 
-                // Chans joins
+                    // Chans joins
 
-
-                // Interactions
-                    if (data.Length == 4 && (data[1] == "PRIVMSG" || data[1] == "NOTICE"))
+                    if (data.Length == 4 && data[2] == _server.BotNick)
                     {
-                        if(data[2] == _server.BotNick)
+                        // Interactions
+
+                        if (data[1] == "PRIVMSG")
                         {
-                            switch(data[3])
+                            switch (data[3].ToLower())
                             {
                                 case ":ping":
-                                case ":PING":
                                     SendCommand("PRIVMSG", GetNick(data[0]), "pong");
                                     continue;
+
+                                case ":test":
+                                    SendCommand("NS STATUS", GetNick(data[0]));
+                                    continue;
+                            }
+                        }
+                        else if (data[1] == "NOTICE")
+                        {
+                            switch (data[3].ToLower())
+                            {
                             }
                         }
                     }
@@ -173,40 +214,6 @@ namespace JMS.Core
         private string GetNick(string identifier)
         {
             return identifier.Substring(1, identifier.IndexOf("!") - 1);
-        }
-
-        private void Reading()
-        {
-            try
-            {
-                while (_running)
-                {
-                    _getData.WaitOne();
-                    _data = _reader.ReadLine();
-                    _gotData.Set();
-                }
-            }
-            catch (Exception)
-            {}
-            finally
-            {
-                _app.Debug("Reading thread terminated");
-            }
-        }
-
-        private string ReadLine(int timeout)
-        {
-            _getData.Set();
-            bool success = _gotData.WaitOne(timeout);
-            if (success)
-                return _data;
-            else
-                return "NOP";
-        }
-
-        public bool IsRunning
-        {
-            get { return _running; }
         }
     }
 }
